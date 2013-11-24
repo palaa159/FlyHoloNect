@@ -39,6 +39,8 @@ public:
     vector<ofPoint> array_rightFoot;
     vector<ofPoint> array_torso;
     
+    vector<ofPoint> bodyPoints;
+    
     ofTrueTypeFont verdana;
     
 };

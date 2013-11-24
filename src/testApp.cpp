@@ -2,6 +2,7 @@
 
 //--------------------------------------------------------------
 void testApp::setup() {
+    ofSetBackgroundAuto(false);
     array_size = 200;
     ofSetLogLevel(OF_LOG_VERBOSE);
 
@@ -70,35 +71,35 @@ void testApp::draw(){
         rightFoot = user.getJoint(JOINT_RIGHT_FOOT).getProjectivePosition();
         torso = user.getJoint(JOINT_TORSO).getProjectivePosition();
         
-        array_head.push_back(head);
-        array_leftFoot.push_back(leftFoot);
-        array_leftHand.push_back(leftHand);
-        array_rightFoot.push_back(rightFoot);
-        array_rightHand.push_back(rightHand);
-        array_torso.push_back(torso);
-        
-        if(array_head.size() > array_size) {
-            array_head.erase(array_head.begin());
-        }
-        
-        if(array_leftHand.size() > array_size) {
-            array_leftHand.erase(array_leftHand.begin());
-        }
-        
-        if(array_leftFoot.size() > array_size) {
-            array_leftFoot.erase(array_leftFoot.begin());
-        }
-        
-        if(array_rightFoot.size() > array_size) {
-            array_rightFoot.erase(array_rightFoot.begin());
-        }
-        
-        if(array_rightHand.size() > array_size) {
-            array_rightHand.erase(array_rightHand.begin());
-        }
-        if(array_torso.size() > array_size) {
-            array_torso.erase(array_torso.begin());
-        }
+//        array_head.push_back(head);
+//        array_leftFoot.push_back(leftFoot);
+//        array_leftHand.push_back(leftHand);
+//        array_rightFoot.push_back(rightFoot);
+//        array_rightHand.push_back(rightHand);
+//        array_torso.push_back(torso);
+//        
+//        if(array_head.size() > array_size) {
+//            array_head.erase(array_head.begin());
+//        }
+//        
+//        if(array_leftHand.size() > array_size) {
+//            array_leftHand.erase(array_leftHand.begin());
+//        }
+//        
+//        if(array_leftFoot.size() > array_size) {
+//            array_leftFoot.erase(array_leftFoot.begin());
+//        }
+//        
+//        if(array_rightFoot.size() > array_size) {
+//            array_rightFoot.erase(array_rightFoot.begin());
+//        }
+//        
+//        if(array_rightHand.size() > array_size) {
+//            array_rightHand.erase(array_rightHand.begin());
+//        }
+//        if(array_torso.size() > array_size) {
+//            array_torso.erase(array_torso.begin());
+//        }
         // you can also access the pixel and texture references individually:
         
         // TEXTURE REFERENCE
@@ -136,44 +137,45 @@ void testApp::draw(){
 //	verdana.drawString(msg, 20, openNIDevice.getNumDevices() * 480 - 20);
     
     ofSetColor(255,0,0);
+    ofSetLineWidth(4);
+    ofLine(leftHand.x, leftHand.y, head.x, head.y);
+    ofLine(head.x, head.y, rightHand.x, rightHand.y);
+    ofLine(rightHand.x, rightHand.y, rightFoot.x, rightFoot.y);
+    ofLine(rightFoot.x, rightFoot.y, leftFoot.x, leftFoot.y);
+    ofLine(leftFoot.x, leftFoot.y, leftHand.x, leftHand.y);
     
-//    ofLine(leftHand.x, leftHand.y, head.x, head.y);
-//    ofLine(head.x, head.y, rightHand.x, rightHand.y);
-//    ofLine(rightHand.x, rightHand.y, rightFoot.x, rightFoot.y);
-//    ofLine(rightFoot.x, rightFoot.y, leftFoot.x, leftFoot.y);
-//    ofLine(leftFoot.x, leftFoot.y, leftHand.x, leftHand.y);
+    ofPolyline(bodyPoints);
     
-    for(int i=0; i<array_head.size();i++) {
-        if(i > 1) {
-            ofLine(array_head[i-1].x, array_head[i-1].y, array_head[i].x, array_head[i].y);
-        }
-    }
-    for(int i=0; i<array_leftFoot.size();i++) {
-        if(i > 1) {
-            ofLine(array_leftFoot[i-1].x, array_leftFoot[i-1].y, array_leftFoot[i].x, array_leftFoot[i].y);
-        }
-    }
-    for(int i=0; i<array_rightFoot.size();i++) {
-        if(i > 1) {
-            ofLine(array_rightFoot[i-1].x, array_rightFoot[i-1].y, array_rightFoot[i].x, array_rightFoot[i].y);
-        }
-    }
-    for(int i=0; i<array_leftHand.size();i++) {
-        if(i > 1) {
-            ofLine(array_leftHand[i-1].x, array_leftHand[i-1].y, array_leftHand[i].x, array_leftHand[i].y);
-        }
-    }
-    for(int i=0; i<array_rightHand.size();i++) {
-        if(i > 1) {
-            ofLine(array_rightHand[i-1].x, array_rightHand[i-1].y, array_rightHand[i].x, array_rightHand[i].y);
-        }
-    }
-    for(int i=0; i<array_torso.size();i++) {
-        if(i > 1) {
-            ofLine(array_torso[i-1].x, array_torso[i-1].y, array_torso[i].x, array_torso[i].y);
-        }
-    }
-    
+//    for(int i=0; i<array_head.size();i++) {
+//        if(i > 1) {
+//            ofLine(array_head[i-1].x, array_head[i-1].y, array_head[i].x, array_head[i].y);
+//        }
+//    }
+//    for(int i=0; i<array_leftFoot.size();i++) {
+//        if(i > 1) {
+//            ofLine(array_leftFoot[i-1].x, array_leftFoot[i-1].y, array_leftFoot[i].x, array_leftFoot[i].y);
+//        }
+//    }
+//    for(int i=0; i<array_rightFoot.size();i++) {
+//        if(i > 1) {
+//            ofLine(array_rightFoot[i-1].x, array_rightFoot[i-1].y, array_rightFoot[i].x, array_rightFoot[i].y);
+//        }
+//    }
+//    for(int i=0; i<array_leftHand.size();i++) {
+//        if(i > 1) {
+//            ofLine(array_leftHand[i-1].x, array_leftHand[i-1].y, array_leftHand[i].x, array_leftHand[i].y);
+//        }
+//    }
+//    for(int i=0; i<array_rightHand.size();i++) {
+//        if(i > 1) {
+//            ofLine(array_rightHand[i-1].x, array_rightHand[i-1].y, array_rightHand[i].x, array_rightHand[i].y);
+//        }
+//    }
+//    for(int i=0; i<array_torso.size();i++) {
+//        if(i > 1) {
+//            ofLine(array_torso[i-1].x, array_torso[i-1].y, array_torso[i].x, array_torso[i].y);
+//        }
+//    }
 }
 
 //--------------------------------------------------------------
