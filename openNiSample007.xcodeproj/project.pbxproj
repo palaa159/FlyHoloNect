@@ -863,6 +863,15 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					/Users/aponpalanuwech/Documents/library/oFx_osx_8_0/apps/myApps/kinect001/ofxLibwebsockets/libs/libwebsockets/lib/linux64,
+					/Users/aponpalanuwech/Documents/library/oFx_osx_8_0/apps/myApps/kinect001/ofxLibwebsockets/libs/libwebsockets/lib/linuxarmv6l,
+					/Users/aponpalanuwech/Documents/library/oFx_osx_8_0/apps/myApps/kinect001/ofxLibwebsockets/libs/libwebsockets/lib/osx,
+					/Users/aponpalanuwech/Documents/library/oFx_osx_8_0/apps/myApps/kinect001/ofxLibwebsockets/libs/libwebsockets/lib/win32,
+					/Users/aponpalanuwech/Documents/library/oFx_osx_8_0/apps/myApps/kinect001/ofxLibwebsockets/libs/openssl/lib/osx,
+					/Users/aponpalanuwech/Documents/library/oFx_osx_8_0/apps/myApps/kinect001/ofxLibwebsockets/libs/openssl/lib/win32,
+					/Users/aponpalanuwech/Documents/library/oFx_osx_8_0/addons/ofxAubio/libs/aubio/lib,
+					/Users/aponpalanuwech/Documents/library/oFx_osx_8_0/apps/myApps/kinect001/ofxLibwebsockets/libs/libwebsockets/lib/win32/Debug,
+					/Users/aponpalanuwech/Documents/library/oFx_osx_8_0/apps/myApps/kinect001/ofxLibwebsockets/libs/libwebsockets/lib/win32/Release,
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/android/armeabi\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10 = "\"$(SRCROOT)/bin/data/openni/lib\"";
@@ -970,6 +979,15 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					/Users/aponpalanuwech/Documents/library/oFx_osx_8_0/apps/myApps/kinect001/ofxLibwebsockets/libs/libwebsockets/lib/linux64,
+					/Users/aponpalanuwech/Documents/library/oFx_osx_8_0/apps/myApps/kinect001/ofxLibwebsockets/libs/libwebsockets/lib/linuxarmv6l,
+					/Users/aponpalanuwech/Documents/library/oFx_osx_8_0/apps/myApps/kinect001/ofxLibwebsockets/libs/libwebsockets/lib/osx,
+					/Users/aponpalanuwech/Documents/library/oFx_osx_8_0/apps/myApps/kinect001/ofxLibwebsockets/libs/libwebsockets/lib/win32,
+					/Users/aponpalanuwech/Documents/library/oFx_osx_8_0/apps/myApps/kinect001/ofxLibwebsockets/libs/openssl/lib/osx,
+					/Users/aponpalanuwech/Documents/library/oFx_osx_8_0/apps/myApps/kinect001/ofxLibwebsockets/libs/openssl/lib/win32,
+					/Users/aponpalanuwech/Documents/library/oFx_osx_8_0/addons/ofxAubio/libs/aubio/lib,
+					/Users/aponpalanuwech/Documents/library/oFx_osx_8_0/apps/myApps/kinect001/ofxLibwebsockets/libs/libwebsockets/lib/win32/Debug,
+					/Users/aponpalanuwech/Documents/library/oFx_osx_8_0/apps/myApps/kinect001/ofxLibwebsockets/libs/libwebsockets/lib/win32/Release,
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/bin/data/openni/lib\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../addons/ofxOpenCv/libs/opencv/lib/android/armeabi\"";

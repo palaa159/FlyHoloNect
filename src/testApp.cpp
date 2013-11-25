@@ -1,4 +1,5 @@
 #include "testApp.h"
+#include "stdio.h"
 
 //--------------------------------------------------------------
 void testApp::setup() {
@@ -36,11 +37,7 @@ void testApp::setup() {
 //--------------------------------------------------------------
 void testApp::update(){
     openNIDevice.update();
-}
-
-//--------------------------------------------------------------
-void testApp::draw(){
-	ofSetColor(255, 255, 255);
+    ofSetColor(255, 255, 255);
     
     ofPushMatrix();
     // draw debug (ie., image, depth, skeleton)
@@ -71,57 +68,11 @@ void testApp::draw(){
         rightFoot = user.getJoint(JOINT_RIGHT_FOOT).getProjectivePosition();
         torso = user.getJoint(JOINT_TORSO).getProjectivePosition();
         
-//        array_head.push_back(head);
-//        array_leftFoot.push_back(leftFoot);
-//        array_leftHand.push_back(leftHand);
-//        array_rightFoot.push_back(rightFoot);
-//        array_rightHand.push_back(rightHand);
-//        array_torso.push_back(torso);
-//        
-//        if(array_head.size() > array_size) {
-//            array_head.erase(array_head.begin());
-//        }
-//        
-//        if(array_leftHand.size() > array_size) {
-//            array_leftHand.erase(array_leftHand.begin());
-//        }
-//        
-//        if(array_leftFoot.size() > array_size) {
-//            array_leftFoot.erase(array_leftFoot.begin());
-//        }
-//        
-//        if(array_rightFoot.size() > array_size) {
-//            array_rightFoot.erase(array_rightFoot.begin());
-//        }
-//        
-//        if(array_rightHand.size() > array_size) {
-//            array_rightHand.erase(array_rightHand.begin());
-//        }
-//        if(array_torso.size() > array_size) {
-//            array_torso.erase(array_torso.begin());
-//        }
-        // you can also access the pixel and texture references individually:
-        
-        // TEXTURE REFERENCE
-        //ofTexture & tex = user.getMaskTextureReference();
-        // do something with texture...
-        
-        // PIXEL REFERENCE
-        //ofPixels & pix = user.getMaskPixels();
-        // do something with the pixels...
-        
-        // and point clouds:
-        
         ofPushMatrix();
         // move it a bit more central
         ofTranslate(320, 240, 10);
         user.drawPointCloud();
         
-        // you can also access the mesh:
-        
-        // MESH REFERENCE
-        //ofMesh & mesh = user.getPointCloud();
-        // do something with the point cloud mesh
         
         ofPopMatrix();
         
@@ -129,6 +80,10 @@ void testApp::draw(){
     
     ofDisableBlendMode();
     ofPopMatrix();
+}
+
+//--------------------------------------------------------------
+void testApp::draw(){
     
     // draw some info regarding frame counts etc
 //	ofSetColor(0, 255, 0);
@@ -138,44 +93,31 @@ void testApp::draw(){
     
     ofSetColor(255,0,0);
     ofSetLineWidth(4);
-    ofLine(leftHand.x, leftHand.y, head.x, head.y);
-    ofLine(head.x, head.y, rightHand.x, rightHand.y);
-    ofLine(rightHand.x, rightHand.y, rightFoot.x, rightFoot.y);
-    ofLine(rightFoot.x, rightFoot.y, leftFoot.x, leftFoot.y);
-    ofLine(leftFoot.x, leftFoot.y, leftHand.x, leftHand.y);
     
-    ofPolyline(bodyPoints);
+//    ofLine(leftHand.x, leftHand.y, head.x, head.y);
+//    ofLine(head.x, head.y, rightHand.x, rightHand.y);
+//    ofLine(rightHand.x, rightHand.y, rightFoot.x, rightFoot.y);
+//    ofLine(rightFoot.x, rightFoot.y, leftFoot.x, leftFoot.y);
+//    ofLine(leftFoot.x, leftFoot.y, leftHand.x, leftHand.y);
     
-//    for(int i=0; i<array_head.size();i++) {
-//        if(i > 1) {
-//            ofLine(array_head[i-1].x, array_head[i-1].y, array_head[i].x, array_head[i].y);
-//        }
-//    }
-//    for(int i=0; i<array_leftFoot.size();i++) {
-//        if(i > 1) {
-//            ofLine(array_leftFoot[i-1].x, array_leftFoot[i-1].y, array_leftFoot[i].x, array_leftFoot[i].y);
-//        }
-//    }
-//    for(int i=0; i<array_rightFoot.size();i++) {
-//        if(i > 1) {
-//            ofLine(array_rightFoot[i-1].x, array_rightFoot[i-1].y, array_rightFoot[i].x, array_rightFoot[i].y);
-//        }
-//    }
-//    for(int i=0; i<array_leftHand.size();i++) {
-//        if(i > 1) {
-//            ofLine(array_leftHand[i-1].x, array_leftHand[i-1].y, array_leftHand[i].x, array_leftHand[i].y);
-//        }
-//    }
-//    for(int i=0; i<array_rightHand.size();i++) {
-//        if(i > 1) {
-//            ofLine(array_rightHand[i-1].x, array_rightHand[i-1].y, array_rightHand[i].x, array_rightHand[i].y);
-//        }
-//    }
-//    for(int i=0; i<array_torso.size();i++) {
-//        if(i > 1) {
-//            ofLine(array_torso[i-1].x, array_torso[i-1].y, array_torso[i].x, array_torso[i].y);
-//        }
-//    }
+    
+    ofBeginShape();
+    ofVertex(head.x, head.y);
+    ofVertex(leftHand.x, leftHand.y);
+    ofVertex(leftFoot.x, leftFoot.y);
+    ofVertex(rightFoot.x, rightFoot.y);
+    ofVertex(rightHand.x, rightHand.y);
+    ofEndShape(true);
+    
+//    bShape.addVertex(head);
+//    bShape.addVertex(leftHand);
+//    bShape.addVertex(rightHand);
+//    bShape.addVertex(leftFoot);
+//    bShape.addVertex(rightFoot);
+//    bShape.close();
+//    
+////    ofFill();
+//    bShape.draw();
 }
 
 //--------------------------------------------------------------
@@ -188,7 +130,16 @@ void testApp::userEvent(ofxOpenNIUserEvent & event){
 void testApp::exit(){
     openNIDevice.stop();
 }
-
+//--------------------------------------------------------------
+//void testApp::onMessage( Spacebrew::Message & msg ){
+////    if(msg.name == "SpaceAubio_pitch_receive") {
+////        otherPitch = ofToInt(msg.value);
+////        //cout << "other pitch is" << otherPitch << endl;
+////    }
+////    if(msg.name == "SpaceAubio_volume_receive") {
+////        otherVol = ofToInt(msg.value);
+////    }
+//}
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
 

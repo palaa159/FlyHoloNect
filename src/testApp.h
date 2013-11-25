@@ -1,6 +1,7 @@
 #ifndef _TEST_APP
 #define _TEST_APP
-
+//#include "ofxSpacebrew.h"
+//#include "ofxAubioAnalyzer.h"
 #include "ofxOpenNI.h"
 #include "ofMain.h"
 
@@ -32,17 +33,11 @@ public:
     ofPoint torso;
     int array_size;
     
-    vector<ofPoint> array_head;
-    vector<ofPoint> array_leftHand;
-    vector<ofPoint> array_rightHand;
-    vector<ofPoint> array_leftFoot;
-    vector<ofPoint> array_rightFoot;
-    vector<ofPoint> array_torso;
-    
-    vector<ofPoint> bodyPoints;
+    ofPolyline bShape;
     
     ofTrueTypeFont verdana;
-    
+//    Spacebrew::Connection spacebrew;
+//    void onMessage( Spacebrew::Message & msg );
 };
 
 #endif
