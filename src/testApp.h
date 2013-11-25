@@ -34,6 +34,7 @@ public:
     int array_size;
     
     ofPolyline bShape;
+    float bShape_area;
     
     ofTrueTypeFont verdana;
 //    Spacebrew::Connection spacebrew;

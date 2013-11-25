@@ -84,40 +84,26 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    
+    bShape.clear();
     // draw some info regarding frame counts etc
 //	ofSetColor(0, 255, 0);
 //	string msg = " MILLIS: " + ofToString(ofGetElapsedTimeMillis()) + " FPS: " + ofToString(ofGetFrameRate()) + " Device FPS: " + ofToString(openNIDevice.getFrameRate());
-//    
-//	verdana.drawString(msg, 20, openNIDevice.getNumDevices() * 480 - 20);
-    
+//
     ofSetColor(255,0,0);
     ofSetLineWidth(4);
     
-//    ofLine(leftHand.x, leftHand.y, head.x, head.y);
-//    ofLine(head.x, head.y, rightHand.x, rightHand.y);
-//    ofLine(rightHand.x, rightHand.y, rightFoot.x, rightFoot.y);
-//    ofLine(rightFoot.x, rightFoot.y, leftFoot.x, leftFoot.y);
-//    ofLine(leftFoot.x, leftFoot.y, leftHand.x, leftHand.y);
+    bShape.addVertex(head.x, head.y);
+    bShape.addVertex(leftHand.x, leftHand.y);
+    bShape.addVertex(leftFoot.x, leftFoot.y);
+    bShape.addVertex(rightFoot.x, rightFoot.y);
+    bShape.addVertex(rightHand.x, rightHand.y);
+    bShape.close();
     
+    bShape.draw();
     
-    ofBeginShape();
-    ofVertex(head.x, head.y);
-    ofVertex(leftHand.x, leftHand.y);
-    ofVertex(leftFoot.x, leftFoot.y);
-    ofVertex(rightFoot.x, rightFoot.y);
-    ofVertex(rightHand.x, rightHand.y);
-    ofEndShape(true);
-    
-//    bShape.addVertex(head);
-//    bShape.addVertex(leftHand);
-//    bShape.addVertex(rightHand);
-//    bShape.addVertex(leftFoot);
-//    bShape.addVertex(rightFoot);
-//    bShape.close();
-//    
-////    ofFill();
-//    bShape.draw();
+    bShape_area = abs(bShape.getArea()/1000);
+    verdana.drawString(ofToString(bShape_area), 100, 100);
+//    cout << bShape_area << endl;
 }
 
 //--------------------------------------------------------------
