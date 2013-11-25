@@ -3,7 +3,7 @@
 
 //--------------------------------------------------------------
 void testApp::setup() {
-    ofSetBackgroundAuto(false);
+    ofSetBackgroundAuto(false); // must have
     array_size = 200;
     ofSetLogLevel(OF_LOG_VERBOSE);
 
@@ -37,16 +37,16 @@ void testApp::setup() {
 //--------------------------------------------------------------
 void testApp::update(){
     openNIDevice.update();
+    ofSetColor(0);
+    ofRect(0,0,ofGetScreenWidth(),ofGetScreenHeight());
     ofSetColor(255, 255, 255);
     
-    ofPushMatrix();
     // draw debug (ie., image, depth, skeleton)
-    openNIDevice.drawDebug();
-    ofPopMatrix();
+//    openNIDevice.drawDebug();
     
-    ofPushMatrix();
+//    ofPushMatrix();
     // use a blend mode so we can see 'through' the mask(s)
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+//    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
     // get number of current users
     int numUsers = openNIDevice.getNumTrackedUsers();
@@ -58,6 +58,7 @@ void testApp::update(){
         ofxOpenNIUser & user = openNIDevice.getTrackedUser(i);
         
         // draw the mask texture for this user
+        ofSetLineWidth(4);
         user.drawMask();
         
         // get joint position
@@ -68,18 +69,11 @@ void testApp::update(){
         rightFoot = user.getJoint(JOINT_RIGHT_FOOT).getProjectivePosition();
         torso = user.getJoint(JOINT_TORSO).getProjectivePosition();
         
-        ofPushMatrix();
-        // move it a bit more central
-        ofTranslate(320, 240, 10);
-        user.drawPointCloud();
-        
-        
-        ofPopMatrix();
-        
     }
     
-    ofDisableBlendMode();
-    ofPopMatrix();
+//    ofDisableBlendMode();
+//    ofPopMatrix();
+    openNIDevice.drawDepth(ofGetScreenWidth() - 320, ofGetScreenHeight() - 240, 320,240);
 }
 
 //--------------------------------------------------------------
@@ -91,6 +85,7 @@ void testApp::draw(){
 //
     ofSetColor(255,0,0);
     ofSetLineWidth(4);
+    ofFill();
     
     bShape.addVertex(head.x, head.y);
     bShape.addVertex(leftHand.x, leftHand.y);
@@ -103,7 +98,6 @@ void testApp::draw(){
     
     bShape_area = abs(bShape.getArea()/1000);
     verdana.drawString(ofToString(bShape_area), 100, 100);
-//    cout << bShape_area << endl;
 }
 
 //--------------------------------------------------------------
