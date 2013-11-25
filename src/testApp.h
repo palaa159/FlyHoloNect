@@ -4,6 +4,7 @@
 //#include "ofxAubioAnalyzer.h"
 #include "ofxOpenNI.h"
 #include "ofMain.h"
+#include "oscillator.h"
 
 class testApp : public ofBaseApp{
 
@@ -39,6 +40,14 @@ public:
     ofTrueTypeFont verdana;
 //    Spacebrew::Connection spacebrew;
 //    void onMessage( Spacebrew::Message & msg );
+    
+    void audioOut(float * input, int bufferSize, int nChannels);
+    
+    ofSoundStream stream;
+    
+    float * soundBuffer;
+    
+    oscillator sinWave;
 };
 
 #endif

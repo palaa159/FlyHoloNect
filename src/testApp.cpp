@@ -3,6 +3,13 @@
 
 //--------------------------------------------------------------
 void testApp::setup() {
+    
+    stream.setup(this, 2, 0, 44100, 512, 4);
+    soundBuffer = new float[512];
+    sinWave.setup(44100);
+//    sinWave.setFrequency(440);
+    sinWave.setVolume(1);
+    
     ofSetBackgroundAuto(false); // must have
     array_size = 200;
     ofSetLogLevel(OF_LOG_VERBOSE);
@@ -50,7 +57,7 @@ void testApp::update(){
     
     // get number of current users
     int numUsers = openNIDevice.getNumTrackedUsers();
-    
+    sinWave.setVolume(0);
     // iterate through users
     for (int i = 0; i < numUsers; i++){
         
@@ -68,7 +75,7 @@ void testApp::update(){
         leftFoot = user.getJoint(JOINT_LEFT_FOOT).getProjectivePosition();
         rightFoot = user.getJoint(JOINT_RIGHT_FOOT).getProjectivePosition();
         torso = user.getJoint(JOINT_TORSO).getProjectivePosition();
-        
+        sinWave.setVolume(0.7);
     }
     
 //    ofDisableBlendMode();
@@ -97,6 +104,7 @@ void testApp::draw(){
     bShape.draw();
     
     bShape_area = abs(bShape.getArea()/1000);
+    sinWave.setFrequency(bShape_area * 15);
     verdana.drawString(ofToString(bShape_area), 100, 100);
 }
 
@@ -111,15 +119,9 @@ void testApp::exit(){
     openNIDevice.stop();
 }
 //--------------------------------------------------------------
-//void testApp::onMessage( Spacebrew::Message & msg ){
-////    if(msg.name == "SpaceAubio_pitch_receive") {
-////        otherPitch = ofToInt(msg.value);
-////        //cout << "other pitch is" << otherPitch << endl;
-////    }
-////    if(msg.name == "SpaceAubio_volume_receive") {
-////        otherVol = ofToInt(msg.value);
-////    }
-//}
+
+
+
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
 
@@ -153,4 +155,17 @@ void testApp::mouseReleased(int x, int y, int button){
 //--------------------------------------------------------------
 void testApp::windowResized(int w, int h){
 
+}
+//--------------------------------------------------------------
+void testApp::audioOut(float * output, int bufferSize, int nChannels){
+    
+	for (int i = 0; i < bufferSize; i++){
+        
+        float sample = sinWave.getSample(); //ofRandom(-1,1);
+        
+        output[i*nChannels    ] = sample;
+        output[i*nChannels + 1] = sample;
+        
+        soundBuffer[i] = sample;
+	}
 }
